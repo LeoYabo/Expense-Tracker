@@ -1,0 +1,6 @@
+
+  .category-filter select {
+    font: inherit;
+    padding: 0.5rem 3rem;
+    border-radius: 6px;
+  }
