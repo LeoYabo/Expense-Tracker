@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './CategoryFilter.css';
+import './ExpenseCategory.css';
 
-const CategoryFilter = (props) => {
+const ExpenseCategory = (props) => {
 
   const dropdownChangeHandler = (event) => {
     console.log(event.target.value);
@@ -25,4 +25,4 @@ const CategoryFilter = (props) => {
   );
 };
 
-export default CategoryFilter;
+export default ExpenseCategory;

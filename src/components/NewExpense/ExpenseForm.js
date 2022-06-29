@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import './ExpenseForm.css'
-import '../Expenses/CategoryFilter'
-import CategoryFilter from "../Expenses/CategoryFilter";
+import '../Expenses/ExpenseCategory'
+import ExpenseCategory from "../Expenses/ExpenseCategory";
 import { toBeInvalid } from "@testing-library/jest-dom/dist/matchers";
 
 //the props that is passed here is in the form of the the function "onSaveExpenseData" from NewExpense.js
@@ -100,7 +100,7 @@ const ExpenseForm = (props) => {
             ></input>
         </div>
         <div className="new-expense__control">
-          <CategoryFilter
+          <ExpenseCategory
             onSelectCategory= {onSelectCategory}
           />
         </div>

@@ -18,16 +18,11 @@ function Expenses (props) {
   const filterCategoryChangeHandler = (selectedCategory) => {
     setFilteredCategory(selectedCategory)}  
 
-  //this variable filters the list of expense items passed from App.js based on the year selected in the dropdown menu
-  // const filteredList = props.items.filter(
-  //   function(oneExpense) {
-  //     return oneExpense.date.getFullYear().toString()===filteredYear && oneExpense.category===;
 
-  //   })
-
+   //this variable filters the list of expense items passed from App.js based on the year selected in the dropdown menu
     const filteredList = props.items.filter((oneExpense)=> {
       return oneExpense.date.getFullYear().toString()===filteredYear && oneExpense.category===filteredCategory})
-console.log("lioirr", filteredList)
+
   return (
     //notice that because Card is a custom html tag(component) the attribute className(or any other html attributes)
     //are not recognized and so it acts like a prop that needs to be passed to the Card component where the attribute

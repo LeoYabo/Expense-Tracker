@@ -1,8 +1,7 @@
 import React from 'react';
 
 import './ExpensesFilter.css';
-import './CategoryFilter'
-import CategoryFilter from './CategoryFilter';
+
 
 
 const ExpensesFilter = (props) => {
