@@ -9,8 +9,7 @@ const Chart = (props) => {
     const dataPointValues = props.dataPoints.map(dataPoint => dataPoint.value)
     console.log(dataPointValues)
     
-    //math.max(<values spread by commas>) finds the biggest value in an array and returns it
-    //because the max() method doesnt take an array, we can use the ... operator to pull the values out of the array, to be spread
+    //reduce לוקח את כל ההוצעות מתוך המערך ואז מוצא את הסכום שלהם
     const totalMaximum = dataPointValues.reduce((a, b) => a + b, 0)
 
     return(

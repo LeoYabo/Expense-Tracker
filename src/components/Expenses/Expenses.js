@@ -18,10 +18,15 @@ function Expenses (props) {
   const filterCategoryChangeHandler = (selectedCategory) => {
     setFilteredCategory(selectedCategory)}  
 
-
    //this variable filters the list of expense items passed from App.js based on the year selected in the dropdown menu
     const filteredList = props.items.filter((oneExpense)=> {
-      return oneExpense.date.getFullYear().toString()===filteredYear && oneExpense.category===filteredCategory})
+      //בגלל שאנחנו מקבלים סטרינג בתאריך מהשרת, אנחנו צריכים שוב לעביר בחזרה לאובייקט של תאריך של ג'אבה-סקריפט
+      const abc = Date.parse(oneExpense.date)
+      const aa = new Date(abc)
+      //מייצר סינון של הוצאות לפי קטגוריה ושנה
+      return aa.getFullYear().toString()===filteredYear && oneExpense.category===filteredCategory})
+
+      console.log(filteredList)
 
   return (
     //notice that because Card is a custom html tag(component) the attribute className(or any other html attributes)

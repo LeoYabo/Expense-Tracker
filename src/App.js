@@ -1,41 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
+import Axios from "axios"
 
-//starting data to populate table
+
 function App() {
-  const DUMMY_EXPENSES = [
-    {
-      id: "e1",
-      title: "Toilet Paper",
-      amount: 94.12,
-      date: new Date(2020, 7, 14),
-      category:"Supermarket"
-    },
-    { 
-      id: "e2", 
-      title: "New TV", 
-      amount: 799.49, 
-      date: new Date(2021, 5, 12) ,
-      category: "Misc"
-    },
-    {
-      id: "e3",
-      title: "Car Insurance",
-      amount: 294.67,
-      date: new Date(2021, 2, 28),
-      category: "Misc"
-    },
-  ];
 
-  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+  //סטאיט המכיל את כל ההוצאות
+  const [expenses, setExpenses] = useState([]);
+
+  //מתג הבודק עם הוצאה חדשה הוספה בשביל להפעיל את הפונקציית יוז-אפאקט ולהביא נתונים חדשים מהשרת
+  const [wasNewExpenseAdded, setWasNewExpenseAdded] = useState(false)
+
+
+  //יוז-אפאקט זה הוק המאריץ את הפונקציה בתוכה כל פעם שמשהו שהגדרתי משתנה
+  useEffect(() =>
+    //פונקציה המביא את הנתונים מהשרת וקובעת אותם בתוך סטייט אקספאנסס 
+    { async function getExpenses() {
+      const res = await Axios.get('http://localhost:8000/get_expenses');
+      const response = res.data;
+      setExpenses(response)
+      setWasNewExpenseAdded(false)
+    };
+      getExpenses();
+    }, [wasNewExpenseAdded]); //הפונקציה תופעל כל פעם שהסטייט הזה ישתנה
+
 
   const addExpenseHandler = (expense) => {
-    console.log(expense);
-    //the set function of useState receives a snapshot of the latest state which we can name ourselves and call up in order to update the state based on a previous state
-    setExpenses((prevExpenses) => {
-      return [expense, ...prevExpenses];
-    });
+
+    //שולח נתונים של הוצאה חדשה לטבלה בשרת
+    Axios.post("http://localhost:8000/insert_new_expenses", {
+        title: expense.title,
+        amount: expense.amount,
+        date: (new Date(expense.date).toISOString().slice(0, 19).replace('T', ' ')),
+        category: expense.category
+      });
+
+      // קובע סטייט חדש המעפיל קריאה חדשה המביאה את כל הנתונים מחדש מהשרת
+      setWasNewExpenseAdded(true)
   };
 
   return (

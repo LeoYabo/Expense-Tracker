@@ -20,8 +20,13 @@ const ExpensesChart = props => {
 
     //a loop that will add the value of expenses for that particular month to the array of objects chartDataPoints
     for(const expense of props.expenses){
-        const expenseMonth = expense.date.getMonth(); //starting at 0 => january is at index 0
-        chartDataPoints[expenseMonth].value += expense.amount;
+
+        //שוב מקבלים מספר כסטרינג, אז צריכים לאפוך אותו למספר
+        const abc = Date.parse(expense.date)
+        const aa = new Date(abc)
+        const expenseMonth = aa.getMonth(); //starting at 0 => january is at index 0
+        
+        chartDataPoints[expenseMonth].value += (parseFloat(expense.amount))
     }
 
     return(
