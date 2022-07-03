@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 import "../Expenses/ExpenseCategory";
 import ExpenseCategory from "../Expenses/ExpenseCategory";
-import Axios from "axios";
-import { toBeInvalid } from "@testing-library/jest-dom/dist/matchers";
+
 
 //the props that is passed here is in the form of the the function "onSaveExpenseData" from NewExpense.js
 const ExpenseForm = (props) => {
@@ -38,10 +37,10 @@ const ExpenseForm = (props) => {
 
     //checks that all fields are not empty
     if (
-      enteredAmount == 0 ||
-      enteredTitle == "" ||
-      enteredCategory == "" ||
-      enteredDate == ""
+      enteredAmount === 0 ||
+      enteredTitle === "" ||
+      enteredCategory === "" ||
+      enteredDate === ""
     ) {
       alert("Please enter valid inputs");
     } else {
@@ -68,7 +67,6 @@ const ExpenseForm = (props) => {
   };
 
   const buttonWasClicked = () => {
-    console.log("I was clicked");
     props.onCancel("false");
   };
 

@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import ExpenseItem from "./ExpenseItem";
 import ExpensesFilter from "./ExpensesFilter";
 import ExpenseList from "./ExpenseList"
 import ExpensesChart from './ExpensesChart';
@@ -8,13 +7,14 @@ import Card from "../UI/Card"
 
 function Expenses (props) {
 
-  const [filteredYear, setFilteredYear] = useState('2020')
+  const [filteredYear, setFilteredYear] = useState('2022')
   const [filteredCategory, setFilteredCategory] = useState('Supermarket')
 
-  //this function lifts the state up of the selected year in the filter
+  //this function lifts the state up of the selected year in the filter from the expensesFilter.js file
   const filterYearChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear)}
 
+  //this function lifts the state up of the selected category in the filter from the expensesFilter.js file  
   const filterCategoryChangeHandler = (selectedCategory) => {
     setFilteredCategory(selectedCategory)}  
 
@@ -25,8 +25,6 @@ function Expenses (props) {
       const aa = new Date(abc)
       //מייצר סינון של הוצאות לפי קטגוריה ושנה
       return aa.getFullYear().toString()===filteredYear && oneExpense.category===filteredCategory})
-
-      console.log(filteredList)
 
   return (
     //notice that because Card is a custom html tag(component) the attribute className(or any other html attributes)

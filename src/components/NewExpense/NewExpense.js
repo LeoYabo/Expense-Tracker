@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import './NewExpense.css'
 import ExpenseForm from './ExpenseForm';
-import axios from 'axios';
 
 const NewExpense = (props) =>{
 

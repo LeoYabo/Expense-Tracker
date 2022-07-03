@@ -3,6 +3,7 @@ import Chart from '../Chart/Chart'
 
 const ExpensesChart = props => {
 
+    //starting datapoints for month chart -- all start at zero
     const chartDataPoints = [
         {label: 'Jan',value:0},
         {label: 'Feb',value:0},
